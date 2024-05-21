@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create damage report</title>
+    <link rel="stylesheet" type="text/css" href="/createDamageReport.css">
+</head>
+<body>
+<h1>Create damage report</h1>
+<table>
+    <thead>
+    <tr>
+        <td>Rental contract ID</td>
+        <td>Car ID</td>
+        <td>Frame number</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Registration number</td>
+        <td>Status</td>
+    </tr>
+    </thead>
+    <tr>
+        <td th:text="${rentalContractId}"></td>
+        <td th:text="${car.carId}"></td>
+        <td th:text="${car.frameNumber}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.registrationNumber}"></td>
+        <td th:text="${car.status}"></td>
+    </tr>
+</table>
+<hr>
+<p>Create a damage report to the car above</p>
+<form action="/processCarYesAction" method="post">
+    <table>
+        <tr>
+            <td>Rental contract ID</td>
+            <td><input type="text" name="rentalContractId" th:value="${rentalContractId}" readonly></td>
+        </tr>
+        <tr>
+            <td>Damage description</td>
+            <td><input type="text" name="descriptionOfDamage"></td>
+        </tr>
+        <tr>
+            <td>Repair cost</td>
+            <td><input type="number" name="repairCosts" min="0" max="9999999" required></td>
+        </tr>
+    </table>
+    <input type="hidden" name="status" value="REPORTED">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+    <input type="hidden" name="carId" th:value="${car.carId}">
+    <button type="submit">Submit damage report</button>
+    <p th:if="${message}" th:text="${message}"></p>
+</form>
+<hr>
+<form th:if="${message}" action="/processCarComplete" method="post">
+    <input type="hidden" name="carId" th:value="${car.carId}">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+    <p>If you don't have any other reports to submit, then you can press here:</p>
+    <button type="submit">Go back to main menu</button>
+</form>
+</body>
+</html>

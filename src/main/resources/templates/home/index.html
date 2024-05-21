@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
 </head>
 <body>
+
+<h1>K.W. Bruun & Co</h1>
+
+<form action="/login" method="post"> <!-- EmployeeUsersController -->
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+    </table>
+    <button type="submit">Log in</button>
+</form>
+
+<div th:if="${WrongPassword}" th:text="${WrongPassword}"></div> <!-- Sendes fra /login i EmployeeUserController -->
+<div th:if="${UserDoesNotExist}" th:text="${UserDoesNotExist}"></div> <!-- Sendes fra /login i EmployeeUserController -->
+
+<form action="/signIn" method="get"> <!-- EmployeeUsersController -->
+    <button type="submit">Sign in</button>
+</form>
 
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main menu</title>
+    <link rel="stylesheet" type="text/css" href="/mainMenu.css">
+</head>
+<body>
+<h1 th:text="'Velkommen til din profil, ' + ${employeeUser.getUsername()}"></h1>
+
+<span th:if="${employeeUser.getDepartment().name() == 'DATA_REGISTRATION'}"> <!-- EmployeeUserController -->
+    <form action="/mainMenuDataRegistration" method="get">
+        <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}">
+        <button type="submit">You have access to data registration</button>
+    </form>
+</span>
+
+<span th:if="${employeeUser.getDepartment().name() == 'DAMAGE_AND_REPAIR'}">
+    <form action="/mainMenuDamageAndRepair" method="get">
+        <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}">
+        <button type="submit">You have access to damage and repair</button>
+    </form>
+</span>
+<span th:if="${employeeUser.getDepartment().name() == 'BUSINESS_DEVELOPERS'}">
+    <form action="/mainMenuBusinessDeveloper" method="get">
+        <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}">
+        <button type="submit">You have access as business developer</button>
+    </form>
+</span>
+
+</body>
+</html>

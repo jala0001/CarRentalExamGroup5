@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Developer</title>
+</head>
+<body>
+<span th:text="'Business Developer. Employee: ' + ${employeeUser.getUsername()}"></span>
+<div>
+   <p>Total rented cars: <span th:text="${rentedCarsCount}"></span></p>
+   <p>Total revenue: <span th:text="${totalRevenue}"></span></p>
+</div>
+</body>
+</html>

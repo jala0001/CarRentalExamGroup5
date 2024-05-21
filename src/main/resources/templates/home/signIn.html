@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" type="text/css" href="/signIn.css">
+
+</head>
+<body>
+<h1>Sign in</h1>
+<form action="/signInAction" method="post"> <!-- EmployeeUserController -->
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="username" required></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td>Afdeling</td>
+            <td>
+                <select name="employeeUserDepartment" required>
+                    <option value="DATA_REGISTRATION">Data Registration</option>
+                    <option value="DAMAGE_AND_REPAIR">Damage and Repair</option>
+                    <option value="BUSINESS_DEVELOPERS">Business Developers</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button type="submit">Sign in</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<td th:if="${message}" th:text="${message}">User has been created.</td>
+<form action="/" method="get">
+    <button type="submit">Go back to the log in site</button>
+</form>
+</body>
+</html>

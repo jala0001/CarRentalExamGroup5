@@ -7,7 +7,7 @@ public class Damage {
     private int rentalContractId;
     private String descriptionOfDamage;
     private double repairCosts;
-    private DamageStatus damage;
+    private DamageStatus damageStatus;
 
     public Damage() {
     }
@@ -44,11 +44,11 @@ public class Damage {
         this.repairCosts = repairCosts;
     }
 
-    public DamageStatus getDamage() {
-        return damage;
+    public DamageStatus getDamageStatus() {
+        return damageStatus;
     }
 
-    public void setDamage(DamageStatus damage) {
-        this.damage = damage;
+    public void setDamageStatus(DamageStatus damageStatus) {
+        this.damageStatus = damageStatus;
     }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new customer</title>
+    <link rel="stylesheet" type="text/css" href="/createNewCustomerStyle.css">
+</head>
+<body>
+<h1>Create new customer</h1>
+<hr>
+<form action="/createNewCustomerAction" method="post">
+    <td>Full name</td><td><input type="text" name="name" required></td>
+    <td>Address</td><td><input type="text" name="address" required></td>
+    <td>Phone number</td><td><input type="text" name="number" required></td>
+    <td>E-mail</td><td><input type="text" name="email" required></td>
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}"> <!-- så man kan redirect -->
+    <button type="submit">Submit</button>
+</form>
+<td th:if="${message}" th:text="${message}">Customer has been created.</td>
+<form action="/mainMenuDataRegistration" method="get">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+    <button type="submit">Go back to main menu</button>
+</form>
+</body>
+</html>

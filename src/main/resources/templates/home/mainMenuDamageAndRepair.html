@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Damage and repair</title>
+    <link rel="stylesheet" type="text/css" href="/mainMenuDamageAndRepair.css">
+</head>
+<body>
+<h1>Damage and repair</h1>
+<div class="container">
+    <div class="table-container">
+        <p>List of cars that are returned and ready to be processed:</p>
+        <table>
+            <thead>
+            <tr>
+                <td>Rental contract ID</td><td>Car ID</td><td>Frame number</td><td>Brand</td><td>Model</td><td>Registration number</td><td>Status</td><td>Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="carWithContract : ${rentalContractCarsReturned}">
+                <td th:text="${carWithContract.rentalContractId}"></td>
+                <td th:text="${carWithContract.car.carId}"></td>
+                <td th:text="${carWithContract.car.frameNumber}"></td>
+                <td th:text="${carWithContract.car.brand}"></td>
+                <td th:text="${carWithContract.car.model}"></td>
+                <td th:text="${carWithContract.car.registrationNumber}"></td>
+                <td th:text="${carWithContract.car.status}"></td>
+                <td>
+                    <form action="/processCarForDamages" method="get">
+                        <input type="hidden" name="carId" th:value="${carWithContract.car.carId}">
+                        <input type="hidden" name="rentalContractId" th:value="${carWithContract.rentalContractId}">
+                        <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+                        <button type="submit">Process this car</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <p>Cars in maintenance and their damages:</p>
+        <table>
+            <thead>
+            <tr>
+                <td>Car ID</td><td>Frame number</td><td>Brand</td><td>Model</td><td>Registration number</td><td>Status</td><td>Damage Details</td><td>Finalize Car</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="carWithContract : ${carsInMaintenanceWithDamages}">
+                <td th:text="${carWithContract.car.carId}"></td>
+                <td th:text="${carWithContract.car.frameNumber}"></td>
+                <td th:text="${carWithContract.car.brand}"></td>
+                <td th:text="${carWithContract.car.model}"></td>
+                <td th:text="${carWithContract.car.registrationNumber}"></td>
+                <td th:text="${carWithContract.car.status}"></td>
+                <td>
+                    <div th:each="damage : ${carWithContract.damages}">
+                        <p th:text="'Description: ' + ${damage.descriptionOfDamage} + ', Cost: ' + ${damage.repairCosts} + 'kr. Status: ' + ${damage.damageStatus}"></p>
+                        <form action="/damageReportedToProcessed" method="post">
+                            <input type="hidden" name="damageId" th:value="${damage.damageId}">
+                            <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+                            <button type="submit">Press here when the damage is repaired</button>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <form action="/processCarNo" method="post">
+                        <input type="hidden" name="carId" th:value="${carWithContract.car.carId}">
+                        <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+                        <button type="submit">Click here when all damages are repaired</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

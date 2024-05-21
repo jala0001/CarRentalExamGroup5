@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new car</title>
+    <link rel="stylesheet" type="text/css" href="/createNewCar.css">
+</head>
+<body>
+<h1>Create new car</h1>
+<hr>
+<form action="/createNewCarAction" method="post">
+    <td>Frame number - max 50 characters</td><td><input type="text" name="frameNumber" required></td>
+    <td>Brand</td><td><input type="text" name="brand" required></td>
+    <td>Model</td><td><input type="text" name="model" required></td>
+    <td>Registration number - max 10 characters</td><td><input type="text" name="registrationNumber" required></td>
+    <input type="hidden" name="status" value="AVAILABLE"> <!-- ENUM værdi og tænker umiddelbart at bilen er available fra start når den bliver oprettet. Men det kan diskuteres -->
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}"> <!-- så man kan redirect -->
+    <button type="submit">Submit</button>
+</form>
+<td th:if="${message}" th:text="${message}">Car has been created.</td>
+<form action="/mainMenuDataRegistration" method="get">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+    <button type="submit">Go back to main menu</button>
+</form>
+</body>
+</html>

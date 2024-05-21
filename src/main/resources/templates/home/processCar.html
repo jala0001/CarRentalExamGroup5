@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Process car</title>
+    <link rel="stylesheet" type="text/css" href="/processCar.css">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>Rental contract ID</td>
+        <td>Car ID</td>
+        <td>Frame number</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Registration number</td>
+        <td>Status</td>
+        <td>Action</td>
+        <td>Action</td>
+        <td></td>
+        <td></td>
+    </tr>
+    </thead>
+    <tr>
+        <td th:text="${rentalContractId}"></td>
+        <td th:text="${car.carId}"></td>
+        <td th:text="${car.frameNumber}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.registrationNumber}"></td>
+        <td th:text="${car.status}"></td>
+        <td>
+            <form action="/processCarYes" method="get">
+                <input type="hidden" name="carId" th:value="${car.carId}">
+                <input type="hidden" name="rentalContractId" th:value="${rentalContractId}">
+                <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+                <button type="submit">Car has one or more damages</button>
+            </form>
+        </td>
+        <td>
+            <form action="/processCarNo" method="post">
+                <input type="hidden" name="carId" th:value="${car.carId}">
+                <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
+                <button type="submit">Car has no damages</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

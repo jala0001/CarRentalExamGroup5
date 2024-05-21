@@ -7,18 +7,18 @@ body {
     margin: 0;
     padding: 20px;
 }
+
 h1 {
     color: #333;
+    margin-bottom: 10px;
 }
-hr {
-    width: 100%;
-    max-width: 600px;
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    margin: 20px 0;
+
+h2 {
+    color: #555;
+    margin-bottom: 20px;
 }
-form {
+
+div {
     background: #ffffff;
     padding: 20px;
     border-radius: 8px;
@@ -29,17 +29,17 @@ form {
     flex-direction: column;
     gap: 10px;
 }
-td {
-    margin-bottom: 10px;
+
+p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
 }
-input[type="text"],
-input[type="email"] {
-    width: calc(100% - 10px); /* Subtract padding */
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+p span {
+    font-weight: bold;
 }
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -49,11 +49,7 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
+
 button:hover {
     background-color: #45a049;
-}
-.message {
-    color: green;
-    margin-top: 20px;
-    font-weight: bold;
 }

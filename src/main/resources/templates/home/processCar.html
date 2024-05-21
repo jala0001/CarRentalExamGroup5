@@ -41,6 +41,7 @@
         <td>
             <form action="/processCarNo" method="post">
                 <input type="hidden" name="carId" th:value="${car.carId}">
+                <input type="hidden" name="rentalContractId" th:value="${rentalContractId}"> <!-- tilføjning -->
                 <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
                 <button type="submit">Car has no damages</button>
             </form>

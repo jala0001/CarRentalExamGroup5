@@ -29,4 +29,35 @@
 </form>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data registration</title>
+    <link rel="stylesheet" type="text/css" href="/mainMenuDataRegistration.css">
+</head>
+<body>
+<h1 th:text="'Employee: ' + ${employeeUser.getUsername()}"></h1>
+<h2>Data registration</h2>
+<form action="/createNewCustomer" method="get">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}"> <!-- employeeUserId sendes med så man senere kan redirect -->
+    <button type="submit">Create new customer</button>
+</form>
+
+<form action="/createNewCar" method="get">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}"> <!-- employeeUserId sendes med så man senere kan redirect -->
+    <button type="submit">Create new car</button>
+</form>
+
+<form action="/createRentalContract" method="get">
+    <input type="hidden" name="employeeUserId" th:value="${employeeUser.getEmployeeUserId()}"> <!-- employeeUserId sendes med så man senere kan redirect -->
+    <button type="submit">Create new rental contract</button>
+</form>
+
+
+<form action="/" method="get">
+    <button type="submit">Log out</button>
+</form>
+
+</body>
 </html>

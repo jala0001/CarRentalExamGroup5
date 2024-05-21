@@ -50,7 +50,9 @@
     <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
     <input type="hidden" name="carId" th:value="${car.carId}">
     <button type="submit">Submit damage report</button>
-    <p th:if="${message}" th:text="${message}"></p>
+    <p th:if="${message}" th:text="${message} + ' You have created ' + ${amountOfDamages} + ' damage report' + (${amountOfDamages} == 1 ? '' : 's') + '.'"></p> <!-- ternary operator -->
+
+
 </form>
 <hr>
 <form th:if="${message}" action="/processCarComplete" method="post">

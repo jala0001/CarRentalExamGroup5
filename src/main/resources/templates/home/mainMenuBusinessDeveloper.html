@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Business Developer</title>
+    <link rel="stylesheet" type="text/css" href="/mainMenuBusinessDeveloper.css">
 </head>
 <body>
-<span th:text="'Business Developer. Employee: ' + ${employeeUser.getUsername()}"></span>
+<h1 th:text="'Employee: ' + ${employeeUser.getUsername()}"></h1>
+<h2>Business Developer</h2>
 <div>
-   <p>Total rented cars: <span th:text="${rentedCarsCount}"></span></p>
-   <p>Total revenue: <span th:text="${totalRevenue}"></span></p>
+    <p>Total rented cars: <span th:text="${rentedCarsCount}"></span></p>
+    <p>Total revenue: <span th:text="${totalRevenue}"></span></p>
 </div>
 </body>
 </html>

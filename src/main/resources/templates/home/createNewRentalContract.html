@@ -9,45 +9,51 @@
 <h1>Create new rental contract</h1>
 <hr>
 <form action="/createNewRentalContractAction" method="post">
-    <div>
-        <label for="customerId">Customer:</label>
-        <select id="customerId" name="customerId" required>
-            <option value="">--Vælg en kunde--</option>
-            <option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name} + ' - ' + ${customer.address}"></option>
-        </select>
-    </div>
-    <div>
-        <label for="carId">Car:</label>
-        <select id="carId" name="carId" required>
-            <option value="">--Vælg en bil--</option>
-            <option th:each="car : ${cars}" th:value="${car.carId}" th:text="${car.brand} + ' ' + ${car.model} + ' (' + ${car.registrationNumber} + ')'"></option>
-        </select>
-    </div>
-    <div>
-        <label for="startDate">Start date</label>
-        <input type="date" id="startDate" name="startDate" required>
-    </div>
-    <div>
-        <label for="endDate">End date</label>
-        <input type="date" id="endDate" name="endDate" required>
-    </div>
-    <div>
-        <label for="price">Price - max 7 digits</label>
-        <input type="text" id="price" name="price" required>
-    </div>
-    <div>
-        <label for="pickUpLocation">Pick up location</label>
-        <input type="text" id="pickUpLocation" name="pickUpLocation" required>
-    </div>
-    <div>
-        <label for="conditionOnDelivery">Condition on delivery</label>
-        <input type="text" id="conditionOnDelivery" name="conditionOnDelivery" required>
-    </div>
+    <table>
+        <tr>
+            <td><span>Customer:</span></td>
+            <td>
+                <select id="customerId" name="customerId" required>
+                    <option value="">--Vælg en kunde--</option>
+                    <option th:each="customer : ${customers}" th:value="${customer.customerId}" th:text="${customer.name} + ' - ' + ${customer.address}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Car:</span></td>
+            <td>
+                <select id="carId" name="carId" required>
+                    <option value="">--Vælg en bil--</option>
+                    <option th:each="car : ${cars}" th:value="${car.carId}" th:text="${car.brand} + ' ' + ${car.model} + ' (' + ${car.registrationNumber} + ')'"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Start date</span></td>
+            <td><input type="date" id="startDate" name="startDate" required></td>
+        </tr>
+        <tr>
+            <td><span>End date</span></td>
+            <td><input type="date" id="endDate" name="endDate" required></td>
+        </tr>
+        <tr>
+            <td><span>Price - max 7 digits</span></td>
+            <td><input type="number" id="price" name="price" min="0" max="9999999" required></td>
+        </tr>
+        <tr>
+            <td><span>Pick up location</span></td>
+            <td><input type="text" id="pickUpLocation" name="pickUpLocation" required></td>
+        </tr>
+        <tr>
+            <td><span>Condition on delivery</span></td>
+            <td><input type="text" id="conditionOnDelivery" name="conditionOnDelivery" required></td>
+        </tr>
+    </table>
     <input type="hidden" name="conditionUponReturn" value="to be determined">
     <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
     <button type="submit">Submit</button>
+    <p th:if="${message}" th:text="${message}"></p>
 </form>
-<td th:if="${message}" th:text="${message}">Rental contract has been created.</td>
 <form action="/mainMenuDataRegistration" method="get">
     <input type="hidden" name="employeeUserId" th:value="${employeeUserId}">
     <button type="submit">Go back to main menu</button>
